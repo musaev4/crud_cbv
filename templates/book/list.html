@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <table class="table">
+        <tr>
+            <thead class="thead-light">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">ISBN</th>
+            <th><a href="{% url 'book-create' %}">
+                <button type="button" class="btn btn-primary">Create</button>
+            </a></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.name }}</td>
+                <td>{{ book.isbn_number }}</td>
+                <td>
+                    <a href="{% url 'book-detail' pk=book.pk %}">
+                        <button type="button" class="btn btn-warning">Detail</button>
+                    </a>
+                    <a href="{% url 'book-update' pk=book.pk %}">
+                        <button type="button" class="btn btn-warning ml-2">Update</button>
+                    </a>
+                    <a href="{% url 'book-delete' pk=book.pk %}">
+                        <button type="button" class="btn btn-danger ml-2">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    {% if is_paginated %}
+        {% include "_pagination.html" %}
+    {% endif %}
+
+{% endblock %}
