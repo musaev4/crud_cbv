@@ -65,3 +65,4 @@ class BookDeleteView(DeleteView):
     success_url = reverse_lazy('book-list')
 
 def book_list(request):
+    pass
