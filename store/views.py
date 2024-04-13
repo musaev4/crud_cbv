@@ -63,3 +63,5 @@ class BookDeleteView(DeleteView):
     model = Book
     template_name = 'book/delete.html'
     success_url = reverse_lazy('book-list')
+
+def book_list(request):
